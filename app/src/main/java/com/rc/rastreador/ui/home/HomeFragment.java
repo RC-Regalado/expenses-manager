@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.rc.rastreador.R;
 import com.rc.rastreador.databinding.FragmentHomeBinding;
+import com.rc.rastreador.expenses.Event;
+import com.rc.rastreador.expenses.Expense;
 import com.rc.rastreador.utils.Adapter;
 
 public class HomeFragment extends Fragment {
@@ -33,7 +35,11 @@ public class HomeFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        mAdapter = new Adapter(new String[]{"A", "B"});
+        Event[] events = new Event[]{
+           new Expense("Gasolina", 1.2f),
+           new Expense("Mercado", 50.5f)
+        } ;
+        mAdapter = new Adapter(events);
 
         mRecyclerView = view.findViewById(R.id.expenses_list);
         mRecyclerView.setAdapter(mAdapter);

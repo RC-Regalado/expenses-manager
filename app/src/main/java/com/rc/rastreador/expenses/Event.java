@@ -21,10 +21,11 @@ public class Event {
 
     public Event() {
         this.leafs = new ArrayList<>();
+        this.date = new Date();
     }
 
     public void collectData(Collector collector){
-        if (leafs == null){
+        if (leafs == null || leafs.size() == 0){
             collector.add(cost);
             return;
         }
@@ -39,5 +40,9 @@ public class Event {
         if (this instanceof Expense) throw new RuntimeException("Expenses couldn't have leafs;");
 
         leafs.add(leaf);
+    }
+
+    public String getName() {
+        return name;
     }
 }
